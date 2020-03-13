@@ -31,20 +31,20 @@
     "menus": {
       "explorer/context": [
         {
-          "when": "resourceLangId == javascript",
+          "when": "explorerResourceIsFolder",
           "command": "extension.createFragmentSnapshotTest",
           "group": "RelaySnapshotTestGenerator@1"
         },
         {
-          "when": "resourceLangId == javascript",
+          "when": "explorerResourceIsFolder",
           "command": "extension.createComponentSnapshotTest",
           "group": "RelaySnapshotTestGenerator@1"
-		},
-		{
-			"when": "resourceLangId == javascript",
-			"command": "extension.createMutationTest",
-			"group": "RelaySnapshotTestGenerator@1"
-		  }
+        },
+        {
+          "when": "explorerResourceIsFolder",
+          "command": "extension.createMutationTest",
+          "group": "RelaySnapshotTestGenerator@1"
+        }
       ]
     }
   },

@@ -15,9 +15,13 @@ export function activate(context: vscode.ExtensionContext) {
 	// The commandId parameter must match the command field in package.json
 	let disposable = vscode.commands.registerCommand('extension.createFragmentSnapshotTest', () => {
 		// The code you place here will be executed every time your command is executed
-
+		var content = 'empty';
+		var filename = vscode.window.activeTextEditor?.document.fileName;
+	///	var filePath = path.join(vscode.workspace.rootPath, selected.label + '.' + field);
+//fs.writeFileSync(filePath, content, 'utf8');
 		// Display a message box to the user
-		vscode.window.showInformationMessage('Create fragment test template!');
+		console.log(filename)
+		vscode.window.showInformationMessage("Fragment Snapshot Test Generated");
 	});
 
 	context.subscriptions.push(disposable);
