@@ -1,8 +1,7 @@
 // The module 'vscode' contains the VS Code extensibility API
 // Import the module and reference it with the alias vscode in your code below
 import * as vscode from "vscode";
-import * as fs from "fs";
-
+import fragmentTemplate from './__templates__/fragment_template'
 // this method is called when your extension is activated
 // your extension is activated the very first time the command is executed
 export function activate(context: vscode.ExtensionContext) {
@@ -11,7 +10,6 @@ export function activate(context: vscode.ExtensionContext) {
   console.log(
     'Congratulations, your extension "relay-snapshot-tests-generator" is now active!'
   );
-
   // The command has been defined in the package.json file
   // Now provide the implementation of the command with registerCommand
   // The commandId parameter must match the command field in package.json
@@ -19,32 +17,20 @@ export function activate(context: vscode.ExtensionContext) {
     "extension.createFragmentSnapshotTest",
     e => {
       vscode.window.showInputBox().then(filename => {
-        const path = `${e.fsPath}\\${filename}.js`;
-        const content = Buffer.from("some content\n");
-        writeContent(path, content);
+      
+        const outputFilePath = `${e.fsPath}\\${filename}.js`;
+        const content = Buffer.from(fragmentTemplate(filename!));
+        vscode.workspace.fs
+          .writeFile(vscode.Uri.file(outputFilePath), content)
+          .then(() => {
+            vscode.window.showInformationMessage("Test Template Generated");
+          });
       });
     }
   );
 
   context.subscriptions.push(disposable);
 }
-
-const writeContent = (path: string, content: Buffer) => {
-  fs.open(path, "w", function(err: any, fd: any) {
-    if (err) {
-      vscode.window.showErrorMessage("error opening file: " + err);
-    }
-
-    fs.write(fd, content, 0, content.length, null, (err: any) => {
-      if (err) {
-        vscode.window.showErrorMessage("error writing file: " + err);
-      }
-      fs.close(fd, () =>
-        vscode.window.showInformationMessage("Test Template Generated")
-      );
-    });
-  });
-};
 
 // this method is called when your extension is deactivated
 export function deactivate() {}
