@@ -1,6 +1,6 @@
 # relay-snapshot-tests-generator - VSCode Extension
 ![this screenshot](/icon.png)
-#### relay-snapshot-tests-generator generates templates for your snapshot tests for fragments, components, and mutations in react native projects using relay. 
+#### Generates snapshot test templates for react native projects using relay. 
 
 ## Features
 
