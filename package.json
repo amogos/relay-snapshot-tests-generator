@@ -3,6 +3,7 @@
   "displayName": "relay-snapshot-tests-generator",
   "description": "Generates templates for your relay snapshot testing",
   "version": "0.0.1",
+  "icon": "icon.png",
   "engines": {
     "vscode": "^1.43.0"
   },
