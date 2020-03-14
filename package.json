@@ -4,6 +4,11 @@
   "description": "Generates templates for your relay snapshot testing",
   "version": "0.0.1",
   "icon": "icon.png",
+  "publisher": "IuliaMogos",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/amogos/relay-snapshot-tests-generator.git"
+  },
   "engines": {
     "vscode": "^1.43.0"
   },
